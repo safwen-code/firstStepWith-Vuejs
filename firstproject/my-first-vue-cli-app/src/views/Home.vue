@@ -1,16 +1,18 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <MenuList
-      v-for="item in simpleMenu"
-      :key="item.name"
-      :name="item.name"
-      :image="item.image"
-      :inStock="item.inStock"
-      :quantity="item.quantity"
-      :addtoshopping="addtoshopping"
-      :shoppingcart="shoppingcart"
-    />
+    <h2>shoppingcart {{ shoppingcart }}</h2>
+    <div class="menulist">
+      <MenuList
+        v-for="item in simpleMenu"
+        :key="item.name"
+        :name="item.name"
+        :image="item.image"
+        :inStock="item.inStock"
+        :quantity="item.quantity"
+        :addtoshopping="addtoshopping"
+        :price="item.price"
+      />
+    </div>
   </div>
 </template>
 
@@ -40,6 +42,7 @@ export default {
           },
           inStock: true,
           quantity: 12,
+          price: 2.99,
         },
         {
           name: "Baguette de pain",
@@ -49,6 +52,7 @@ export default {
           },
           inStock: true,
           quantity: 5,
+          price: 55,
         },
         {
           name: "Éclair",
@@ -58,6 +62,7 @@ export default {
           },
           inStock: false,
           quantity: 10,
+          price: 10,
         },
       ],
       shoppingcart: 0,
@@ -71,3 +76,22 @@ export default {
   },
 };
 </script>
+
+<style>
+.menulist {
+  display: flex;
+  flex-direction: row;
+  margin-left: "10px";
+  margin-right: "10px";
+  justify-content: center;
+  align-items: center;
+}
+.vuelogo {
+  display: inline-flex;
+}
+h2 {
+  color: blue;
+  font-size: 15px;
+  font-weight: bold;
+}
+</style>
