@@ -10,12 +10,12 @@
     <div id="app">
       <h1>colorchange test</h1>
       <button type="button" v-on:click="showcolor">click</button>
-      <h2>change color</h2>
+      <h2>change color : {{color}}</h2>
       <input
         id="newColor"
         type="text"
         placeholder="give me color"
-        v-on:keyup.enter="changeColor"
+        v-model="color"
       />
     </div>
 
@@ -29,10 +29,6 @@
         methods: {
           showcolor() {
             alert(this.color);
-          },
-          changeColor() {
-            this.color = document.getElementById("newColor").value;
-            console.log("hi")
           },
         },
       });
