@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <ol>
+        <li v-for="item in simpleMenu" :key="item.name">
+          <h6>{{item.name}}</h6>
+          <img
+            class="menu-item__image"
+            :src="item.image.source"
+            :alt="item.image.alt"
+          />
+          <span v-if="item.inStock">this product onstock</span>
+          <span v-else>this product En rupture de stock</span>
+          <div>
+            <h4 id="quantity">quantity {{item.quantity}}</h4>
+            <input type="text" v-model.number="item.quantity" />
+            <button type="button" v-on:click="addtoshopping(item.quantity)">
+              add to shopping cart
+            </button>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+  <script>
+    const vue = new Vue({
+      el: "#app",
+      data: {
+        address: "18 avenue du Beurre, Paris, France",
+        email: "hello@cafewithavue.bakery",
+        phone: "01 88 88 88 88",
+        restaurantName: "La belle vue",
+        simpleMenu: [
+          {
+            name: "Croissant",
+            image: {
+              source: "./images/croissant.jpg",
+              alt: "Un croissant",
+            },
+            inStock: true,
+            quantity: 12,
+          },
+          {
+            name: "Baguette de pain",
+            image: {
+              source: "./images/french-baguette.jpeg",
+              alt: "Quatre baguettes de pain",
+            },
+            inStock: true,
+            quantity: 5,
+          },
+          {
+            name: "Éclair",
+            image: {
+              source: "./images/eclair.jpg",
+              alt: "Éclair au chocolat",
+            },
+            inStock: false,
+            quantity: 10,
+          },
+        ],
+        shoppingcart: 0,
+      },
+      computed: {},
+      methods: {
+        addtoshopping(quantity) {
+          this.shoppingcart += quantity;
+          console.log(this.shoppingcart);
+        },
+      },
+    });
+  </script>
+</html>
