@@ -1,0 +1,11 @@
+
+//docs:
+
+Create - qui représente la durée pendant laquelle le composant est en construction
+
+Mount - qui représente le moment durant lequel le composant va être rendu sur notre page.
+
+Destroy - qui représente le moment où le composant va être retiré de la page.
+
+les hooks:
+beforeCreate, created, beforMount, monted, beforDestroy, destroyed

@@ -21,3 +21,7 @@ npm run serve
 
 //router
 vue add router
+
+//docs:
+<router-view></router-view> : il définit la zone de la page dans laquelle apparaîtra le composant que nous définissons dans chaque route
+<router-link></router-link>  - similaire à la balise  anchor  en HTML, ce composant permet également la navigation de l'utilisateur dans l'application.
