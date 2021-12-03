@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id='app'>
+        <h1>VueMart</h1>
+
+        <h2>Panier</h2>
+        <ul>
+            <li v-for="item in shoppingCart" v-if="item.cost>0" >
+
+                <a v-bind:href="item.url">{{item.label}}</a> {{item.cost}}€ 
+            </li>
+        </ul>
+        <p>Total: {{totalPrice}}€</li>
+    </div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+<script>
+    const vue = new Vue({
+        el: "#app",
+        data: {
+            shoppingCart: [
+                {
+                    label: "appels",
+                    cost: 0,
+                    url: "/apples.html"
+                },
+                {
+                    label: "banan",
+                    cost: 10,
+                    url: "/banan.html"
+                },
+                {
+                    label: "coconute",
+                    cost: 10,
+                    url: "/coconuteF.html"
+                }
+            ]
+
+        },
+        computed: {
+
+            totalPrice() {
+                let total = 0
+                this.shoppingCart.forEach(element => {
+                    total += element.cost
+                });
+
+                return total
+            }
+        }
+
+    })
+</script>
+
+</html>
