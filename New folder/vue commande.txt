@@ -1,0 +1,20 @@
+
+// installez vue cli
+npm install -g @vue/cli
+# OU (selon si vous avez l’habitude d’utiliser npm ou yarn)
+yarn global add @vue/cli
+
+//vue version
+vue --version
+
+//Créer un nouveau projet avec Vue CLI
+vue create my-first-vue-cli-app
+
+// run application
+npm run serve
+
+
+//docs :
+<script> for code 
+<template> for html
+<style> for css
