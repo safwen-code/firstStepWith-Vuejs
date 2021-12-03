@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>colorchange test</h1>
+      <button type="button" v-on:click="showcolor">click</button>
+      <h2>change color</h2>
+      <input
+        id="newColor"
+        type="text"
+        placeholder="give me color"
+        v-on:keyup.enter="changeColor"
+      />
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script>
+      const vue = new Vue({
+        el: "#app",
+        data: {
+          color: "red",
+        },
+        methods: {
+          showcolor() {
+            alert(this.color);
+          },
+          changeColor() {
+            this.color = document.getElementById("newColor").value;
+            console.log("hi")
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
