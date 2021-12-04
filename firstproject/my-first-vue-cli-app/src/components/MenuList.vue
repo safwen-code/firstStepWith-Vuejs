@@ -39,6 +39,11 @@ export default {
       this.onSale = true;
     }
   },
+  methods: {
+    updatequantity(quantity) {
+      this.$emit("add-item-quantity", quantity);
+    },
+  },
 };
 </script>
 
@@ -56,7 +61,7 @@ export default {
         </div>
         <div class="quantityInfo">
           <input v:model-number="quantity" type="number" />
-          <button type="button" v-on:click="addtoshopping(quantity)">
+          <button type="button" v-on:click="updatequantity(quantity)">
             add to cart
           </button>
         </div>
