@@ -1,6 +1,9 @@
 <script>
+
+import {mapActions} from 'vuex'
 export default {
   name: "MenuList",
+
   props: {
     name: {
       type: String,
@@ -40,10 +43,8 @@ export default {
     }
   },
   methods: {
-    updatequantity(quantity) {
-      this.$emit("add-item-quantity", quantity);
-    },
-  },
+		...mapActions(["updateShoppingCart"])
+	},
 };
 </script>
 
@@ -61,9 +62,7 @@ export default {
         </div>
         <div class="quantityInfo">
           <input v:model-number="quantity" type="number" />
-          <button type="button" v-on:click="updatequantity(quantity)">
-            add to cart
-          </button>
+          <button @click="updateShoppingCart(quantity)"> add to cart </button>
         </div>
       </div>
     </div>
