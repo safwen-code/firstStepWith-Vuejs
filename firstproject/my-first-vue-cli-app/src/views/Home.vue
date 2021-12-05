@@ -1,15 +1,16 @@
 <template>
   <div class="home">
+    <h1>{{ restaurantName }}</h1>
     <h2>shoppingcart {{ shoppingcart }}</h2>
     <div class="menulist">
       <MenuList
         v-for="item in simpleMenu"
+        @add-item-quantity="addtoshopping"
         :key="item.name"
         :name="item.name"
         :image="item.image"
         :inStock="item.inStock"
         :quantity="item.quantity"
-        :addtoshopping="addtoshopping"
         :price="item.price"
       />
     </div>
@@ -18,55 +19,19 @@
 
 <script>
 // @ is an alias to /src
+import { mapState } from "vuex";
 import MenuList from "../components/MenuList.vue";
-import croissant from "../assets/croissant.jpg";
-import eclair from "../assets/eclair.jpg";
-import baguette from "../assets/baguette.jpeg";
 export default {
   name: "home",
   components: {
     MenuList,
   },
-  data() {
-    return {
-      address: "18 avenue du Beurre, Paris, France",
-      email: "hello@cafewithavue.bakery",
-      phone: "01 88 88 88 88",
-      restaurantName: "La belle vue",
-      simpleMenu: [
-        {
-          name: "Croissant",
-          image: {
-            source: croissant,
-            alt: "Un croissant",
-          },
-          inStock: true,
-          quantity: 12,
-          price: 2.99,
-        },
-        {
-          name: "Baguette de pain",
-          image: {
-            source: baguette,
-            alt: "Quatre baguettes de pain",
-          },
-          inStock: true,
-          quantity: 5,
-          price: 55,
-        },
-        {
-          name: "Éclair",
-          image: {
-            source: eclair,
-            alt: "Éclair au chocolat",
-          },
-          inStock: false,
-          quantity: 10,
-          price: 10,
-        },
-      ],
-      shoppingcart: 0,
-    };
+  computed: {
+    ...mapState({
+      shoppingcart: "shoppingcart",
+      restaurantName: "restaurantName",
+      simpleMenu:"simpleMenu"
+    }),
   },
   methods: {
     addtoshopping(quantity) {
